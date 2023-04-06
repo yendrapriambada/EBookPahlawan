@@ -12,6 +12,30 @@
         android:theme="@style/Theme.EBookPahlawan"
         tools:targetApi="31">
         <activity
+            android:name=".PahlawanTemplate2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PahlawanTemplate1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".InstruksiContohActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Materi3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Materi2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Materi1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TentangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KeteranganActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddIdentityActivity"
             android:exported="false" />
         <activity

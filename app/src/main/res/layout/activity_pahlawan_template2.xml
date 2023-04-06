@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_template2"
+    tools:context=".PahlawanTemplate2Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="285dp"
+            android:layout_height="103dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/title_template2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/bg_foto_pahlawan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/banner" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:src="@drawable/img_nuku"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="@+id/banner"
+            app:layout_constraintStart_toStartOf="@+id/banner"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/a_plainer_font"
+            android:gravity="center"
+            android:text="NUKU MUHAMMAD AMIRUDDIN"
+            android:textColor="#FF3131"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <!-- First row -->
+        <TextView
+            android:id="@+id/cell1"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lahir"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/cell2"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=":"
+            app:layout_constraintStart_toEndOf="@+id/cell4"
+            app:layout_constraintTop_toTopOf="@+id/cell1" />
+
+        <TextView
+            android:id="@+id/cell3"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sintang, Kalimantan Barat, 1771"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cell2"
+            app:layout_constraintTop_toTopOf="@+id/cell2" />
+
+        <!-- Second row -->
+        <TextView
+            android:id="@+id/cell4"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/a_plainer_font"
+            android:text="Meninggal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cell1"
+            app:layout_constraintTop_toBottomOf="@+id/cell3" />
+
+        <TextView
+            android:id="@+id/cell5"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=":"
+            app:layout_constraintLeft_toRightOf="@id/cell4"
+            app:layout_constraintTop_toTopOf="@+id/cell4" />
+
+        <TextView
+            android:id="@+id/cell6"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Melawi, kalimantan barat, 1875"
+            app:layout_constraintEnd_toEndOf="@+id/cell3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cell5"
+            app:layout_constraintTop_toBottomOf="@id/cell3" />
+
+        <!-- Third row -->
+        <TextView
+            android:id="@+id/cell7"
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Kepala Pemerintahan Melawi yang merupakan anggota dari Kerajaan Sintang"
+            app:layout_constraintEnd_toEndOf="@+id/cell6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cell4"
+            app:layout_constraintTop_toBottomOf="@+id/cell6" />
+
+        <TextView
+            style="@style/regularFont2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_peran2"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Kepala Pemerintahan Melawi yang merupakan anggota dari Kerajaan Sintang beliau mengembangkan potensi ekonomi di daerah melawi dan juga diam-diam menghimpun kekuatan rakyat dan mengakses seluruh informasi untuk melawan belanda"
+            app:layout_constraintEnd_toEndOf="@+id/cell7"
+            app:layout_constraintStart_toStartOf="@+id/cell7"
+            app:layout_constraintTop_toBottomOf="@+id/cell7" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
