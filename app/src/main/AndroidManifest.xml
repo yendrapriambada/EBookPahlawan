@@ -12,21 +12,6 @@
         android:theme="@style/Theme.EBookPahlawan"
         tools:targetApi="31">
         <activity
-            android:name=".ReferenceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ReflectionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PracticeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MKCActivity"
-            android:exported="false" />
-        <activity
-            android:name=".QouteActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddIdentityActivity"
             android:exported="false" />
         <activity
