@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_template2"
+    android:fillViewport="true"
     tools:context=".PahlawanTemplate2Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,12 +142,13 @@
             style="@style/regularFont2"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="224dp"
             android:background="@drawable/bg_peran2"
             android:gravity="center"
             android:padding="10dp"
             android:text="Kepala Pemerintahan Melawi yang merupakan anggota dari Kerajaan Sintang beliau mengembangkan potensi ekonomi di daerah melawi dan juga diam-diam menghimpun kekuatan rakyat dan mengakses seluruh informasi untuk melawan belanda"
             app:layout_constraintEnd_toEndOf="@+id/cell7"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/cell7"
             app:layout_constraintTop_toBottomOf="@+id/cell7" />
 
