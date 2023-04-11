@@ -1,7 +1,8 @@
-package com.nurfadillahdwi.ebookpahlawan
+package com.nurfadillahdwi.ebookpahlawan.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nurfadillahdwi.ebookpahlawan.R
 
 class ReferenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

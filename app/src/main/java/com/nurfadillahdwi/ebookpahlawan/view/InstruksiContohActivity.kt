@@ -1,11 +1,11 @@
-package com.nurfadillahdwi.ebookpahlawan
+package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.nurfadillahdwi.ebookpahlawan.R
 
 class InstruksiContohActivity : AppCompatActivity() {
     private var x1: Float = 0.0F
@@ -27,7 +27,7 @@ class InstruksiContohActivity : AppCompatActivity() {
                     startActivity(i)
                     Animatoo.animateSlideRight( this)
                 } else if (x1 > x2) {
-                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                    val i = Intent(this, PahlawanTemplate1Activity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
 

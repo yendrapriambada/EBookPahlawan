@@ -1,4 +1,4 @@
-package com.nurfadillahdwi.ebookpahlawan
+package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.nurfadillahdwi.ebookpahlawan.R
 
 class Materi2Activity : AppCompatActivity() {
     private var x1: Float = 0.0F

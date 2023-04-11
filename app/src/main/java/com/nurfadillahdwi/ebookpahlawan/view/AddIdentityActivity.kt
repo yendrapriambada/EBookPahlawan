@@ -1,18 +1,19 @@
-package com.nurfadillahdwi.ebookpahlawan
+package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.nurfadillahdwi.ebookpahlawan.R
 
-class KeteranganActivity : AppCompatActivity() {
+class AddIdentityActivity : AppCompatActivity() {
     private var x1: Float = 0.0F
     private var x2: Float = 0.0F
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_keterangan)
+        setContentView(R.layout.activity_add_identity)
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
@@ -23,11 +24,11 @@ class KeteranganActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, AddIdentityActivity::class.java)
+                    val i = Intent(this, MainActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideRight( this)
                 } else if (x1 > x2) {
-                    val i = Intent(this, TentangActivity::class.java)
+                    val i = Intent(this, KeteranganActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
 

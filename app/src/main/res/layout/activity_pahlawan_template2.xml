@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_template2"
     android:fillViewport="true"
-    tools:context=".PahlawanTemplate2Activity">
+    tools:context=".view.PahlawanTemplate2Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/banner" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/foto_pahlawan"
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:src="@drawable/img_nuku"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/nama_pahlawan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/foto_pahlawan" />
 
         <!-- First row -->
         <TextView
@@ -69,8 +69,8 @@
             android:layout_marginTop="8dp"
             android:text="Lahir"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintStart_toStartOf="@+id/nama_pahlawan"
+            app:layout_constraintTop_toBottomOf="@+id/nama_pahlawan" />
 
         <TextView
             android:id="@+id/cell2"
@@ -82,12 +82,12 @@
             app:layout_constraintTop_toTopOf="@+id/cell1" />
 
         <TextView
-            android:id="@+id/cell3"
+            android:id="@+id/lahir_pahlawan"
             style="@style/regularFont2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Sintang, Kalimantan Barat, 1771"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/nama_pahlawan"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cell2"
             app:layout_constraintTop_toTopOf="@+id/cell2" />
@@ -102,7 +102,7 @@
             android:text="Meninggal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cell1"
-            app:layout_constraintTop_toBottomOf="@+id/cell3" />
+            app:layout_constraintTop_toBottomOf="@+id/lahir_pahlawan" />
 
         <TextView
             android:id="@+id/cell5"
@@ -114,29 +114,29 @@
             app:layout_constraintTop_toTopOf="@+id/cell4" />
 
         <TextView
-            android:id="@+id/cell6"
+            android:id="@+id/wafat_pahlawan"
             style="@style/regularFont2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Melawi, kalimantan barat, 1875"
-            app:layout_constraintEnd_toEndOf="@+id/cell3"
+            app:layout_constraintEnd_toEndOf="@+id/lahir_pahlawan"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cell5"
-            app:layout_constraintTop_toBottomOf="@id/cell3" />
+            app:layout_constraintTop_toBottomOf="@id/lahir_pahlawan" />
 
         <!-- Third row -->
         <TextView
-            android:id="@+id/cell7"
+            android:id="@+id/keterangan_pahlawan"
             style="@style/regularFont2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Kepala Pemerintahan Melawi yang merupakan anggota dari Kerajaan Sintang"
-            app:layout_constraintEnd_toEndOf="@+id/cell6"
+            app:layout_constraintEnd_toEndOf="@+id/wafat_pahlawan"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="@+id/cell4"
-            app:layout_constraintTop_toBottomOf="@+id/cell6" />
+            app:layout_constraintTop_toBottomOf="@+id/wafat_pahlawan" />
 
         <TextView
             style="@style/regularFont2"
@@ -147,10 +147,10 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Kepala Pemerintahan Melawi yang merupakan anggota dari Kerajaan Sintang beliau mengembangkan potensi ekonomi di daerah melawi dan juga diam-diam menghimpun kekuatan rakyat dan mengakses seluruh informasi untuk melawan belanda"
-            app:layout_constraintEnd_toEndOf="@+id/cell7"
+            app:layout_constraintEnd_toEndOf="@+id/keterangan_pahlawan"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/cell7"
-            app:layout_constraintTop_toBottomOf="@+id/cell7" />
+            app:layout_constraintStart_toStartOf="@+id/keterangan_pahlawan"
+            app:layout_constraintTop_toBottomOf="@+id/keterangan_pahlawan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

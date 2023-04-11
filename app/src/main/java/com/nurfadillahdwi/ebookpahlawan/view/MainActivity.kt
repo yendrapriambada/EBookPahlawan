@@ -1,4 +1,4 @@
-package com.nurfadillahdwi.ebookpahlawan
+package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle

@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_materi2"
-    tools:context=".Materi2Activity">
+    tools:context=".view.Materi2Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
