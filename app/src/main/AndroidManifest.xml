@@ -14,12 +14,9 @@
         android:theme="@style/Theme.EBookPahlawan"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".view.PahlawanTemplate2Activity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity
-            android:name=".view.PahlawanTemplate1Activity"
+            android:name=".view.PracticeActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -28,6 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.PahlawanTemplate2Activity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".view.PahlawanTemplate1Activity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".view.InstruksiContohActivity"
             android:exported="false"
