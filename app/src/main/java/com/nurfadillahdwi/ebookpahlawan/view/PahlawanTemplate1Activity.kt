@@ -39,40 +39,29 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-        viewModel.getPahlawans(token)
-        viewModel.responsePahlawan.observe(this) { dataItem ->
-            dataItem.data?.forEach {
-                nama?.add(it?.attributes?.nama.toString())
-                lahir?.add(it?.attributes?.tglLahir.toString())
-                wafat?.add(it?.attributes?.tglWafat.toString())
-                keterangan?.add(it?.attributes?.keterangan.toString())
-                peran?.add(it?.attributes?.peran.toString())
-                gambar?.add(it?.attributes?.avatar.toString())
-//                Log.d("deb1", it?.attributes?.nama!!.toString())
-                Log.d("deb1", nama!!.toString())
 
+        viewModel.getPahlawans(token)
+        viewModel.responsePahlawan.observe(this) {
+            it.data?.get(0).let {
+                binding.namaPahlawan.text = it?.attributes?.nama.toString()
+                binding.lahirPahlawan.text = it?.attributes?.tglLahir.toString()
+                binding.wafatPahlawan.text = it?.attributes?.tglWafat.toString()
+                binding.keteranganPahlawan.text = it?.attributes?.keterangan.toString()
+                binding.peranPahlawan.text = it?.attributes?.peran.toString()
+
+                val circularProgressDrawable = CircularProgressDrawable(this)
+                circularProgressDrawable.strokeWidth = 5f
+                circularProgressDrawable.centerRadius = 30f
+                circularProgressDrawable.start()
+
+                Glide.with(this)
+                    .load("http://165.232.161.137:1337" + it?.attributes?.avatar?.data?.attributes?.url.toString())
+                    .placeholder(circularProgressDrawable)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.mipmap.ic_launcher_round)
+                    .into(binding.fotoPahlawan)
             }
         }
-        Log.d("deb1", nama!!.toString())
-
-        val circularProgressDrawable = CircularProgressDrawable(this)
-        circularProgressDrawable.strokeWidth = 5f
-        circularProgressDrawable.centerRadius = 30f
-        circularProgressDrawable.start()
-
-//        binding.namaPahlawan.text = nama!![0]
-//        binding.lahirPahlawan.text = lahir!![0]
-//        binding.wafatPahlawan.text = wafat!![0]
-//        binding.keteranganPahlawan.text = keterangan!![0]
-//        binding.peranPahlawan.text = peran!![0]
-//
-//        Glide.with(this)
-//            .load(this.gambar!![0])
-//            .placeholder(circularProgressDrawable)
-//            .transition(DrawableTransitionOptions.withCrossFade())
-//            .error(R.mipmap.ic_launcher_round)
-//            .into(binding.fotoPahlawan)
-
     }
 
     private fun showLoading(isLoading: Boolean) {
