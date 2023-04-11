@@ -48,7 +48,9 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                 keterangan?.add(it?.attributes?.keterangan.toString())
                 peran?.add(it?.attributes?.peran.toString())
                 gambar?.add(it?.attributes?.avatar.toString())
-                Log.d("deb1", it?.attributes?.nama!!.toString())
+//                Log.d("deb1", it?.attributes?.nama!!.toString())
+                Log.d("deb1", nama!!.toString())
+
             }
         }
         Log.d("deb1", nama!!.toString())
