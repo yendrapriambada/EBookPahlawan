@@ -23,13 +23,6 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
     private val token: String =
         "0110ad0929162b63b7fec2e9b08aca1d0003e99f2db7e4ec8880ea6f9c5a4d6882a7f78f3fc417725ed158eb95929b7c39ec8b5b5a68b0cc38468979f1b5ef2c6aae8e7c78ca53862b9a415a018e5a16646c9285500137649c9a9ce2b11629a92bf205fa6590f0186756c061e08775a26892cda1242a7e9351e0e3594d4b5a2b"
 
-    private val nama: MutableList<String> = ArrayList()
-    private var lahir: MutableList<String>? = ArrayList()
-    private var wafat: MutableList<String>? = ArrayList()
-    private var keterangan: MutableList<String>? = ArrayList()
-    private var peran: MutableList<String>? = ArrayList()
-    private var gambar: MutableList<String>? = ArrayList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPahlawanTemplate1Binding.inflate(layoutInflater)
@@ -42,7 +35,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
 
         viewModel.getPahlawans(token)
         viewModel.responsePahlawan.observe(this) {
-            it.data?.get(0).let {
+            it.data?.get(2).let {
                 binding.namaPahlawan.text = it?.attributes?.nama.toString()
                 binding.lahirPahlawan.text = it?.attributes?.tglLahir.toString()
                 binding.wafatPahlawan.text = it?.attributes?.tglWafat.toString()

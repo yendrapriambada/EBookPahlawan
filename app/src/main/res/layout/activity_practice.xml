@@ -96,7 +96,7 @@
             app:layout_constraintTop_toBottomOf="@+id/edt_heroDeceasedDate" />
 
         <EditText
-            android:id="@+id/edt_heroDesc"
+            android:id="@+id/edt_heroPeran"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
@@ -119,9 +119,9 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/ic_practice_btn_submit"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/edt_heroDesc"
-            app:layout_constraintStart_toStartOf="@+id/edt_heroDesc"
-            app:layout_constraintTop_toBottomOf="@+id/edt_heroDesc" />
+            app:layout_constraintEnd_toEndOf="@+id/edt_heroPeran"
+            app:layout_constraintStart_toStartOf="@+id/edt_heroPeran"
+            app:layout_constraintTop_toBottomOf="@+id/edt_heroPeran" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

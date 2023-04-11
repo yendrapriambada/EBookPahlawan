@@ -2,7 +2,11 @@ package com.nurfadillahdwi.ebookpahlawan.api
 
 import retrofit2.Call
 import com.nurfadillahdwi.ebookpahlawan.response.DataItem
+import com.nurfadillahdwi.ebookpahlawan.response.FileResponse
 import com.nurfadillahdwi.ebookpahlawan.response.PahlawansResponse
+import com.nurfadillahdwi.ebookpahlawan.response.UploadDataResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -12,6 +16,23 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("populate") populate: String = "*"
     ): Call<PahlawansResponse>
+
+    @Multipart
+    @POST("api/ebook-pahlawans")
+    fun uploadDataPahlawan(
+        @Header("Authorization") token: String,
+        @PartMap data: Map<String, @JvmSuppressWildcards String>
+    ): Call<UploadDataResponse>
+
+    @Multipart
+    @POST("api/upload")
+    fun uploadImagePahlawan(
+        @Header("Authorization") token: String,
+        @Part file: MultipartBody.Part,
+        @Part("ref") ref: RequestBody,
+        @Part("refId") refId: RequestBody,
+        @Part("field") field: RequestBody
+    ): Call<FileResponse>
 
 
 //    @FormUrlEncoded
