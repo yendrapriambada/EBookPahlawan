@@ -21,7 +21,7 @@ interface ApiService {
     @POST("api/ebook-pahlawans")
     fun uploadDataPahlawan(
         @Header("Authorization") token: String,
-        @PartMap data: Map<String, @JvmSuppressWildcards String>
+        @PartMap data: Map<String, @JvmSuppressWildcards RequestBody>
     ): Call<UploadDataResponse>
 
     @Multipart

@@ -2,23 +2,20 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPracticeBinding
 import com.nurfadillahdwi.ebookpahlawan.helper.reduceFileImage
 import com.nurfadillahdwi.ebookpahlawan.helper.showToast
 import com.nurfadillahdwi.ebookpahlawan.helper.uriToFile
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
+import com.nurfadillahdwi.ebookpahlawan.response.PahlawanData
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class PracticeActivity : AppCompatActivity() {
@@ -39,6 +36,26 @@ class PracticeActivity : AppCompatActivity() {
         }
         binding.imageButton.setOnClickListener {
             uploadData()
+        }
+
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+        viewModel.onFailure.observe(this) {
+            if (it.contains("Expected BEGIN_OBJECT but was BEGIN_ARRAY")){
+                showToast(this, "Berhasil!")
+            }
+            else{
+                AlertDialog.Builder(this).apply {
+                    setTitle("Oops!")
+                    setMessage(it)
+                    setPositiveButton("Try Again") { dialog, _ ->
+                        dialog.cancel()
+                    }
+                    create()
+                    show()
+                }
+            }
         }
     }
 
@@ -81,27 +98,27 @@ class PracticeActivity : AppCompatActivity() {
                     requestImageFile
                 )
 
-                // Create RequestBody for each form-data field
-                val namaRequestBody = inputName.toRequestBody("text/plain".toMediaType())
-                val tgl_lahirRequestBody = inputLahir.toRequestBody("text/plain".toMediaType())
-                val tgl_wafatRequestBody = inputWafat.toRequestBody("text/plain".toMediaType())
-                val keteranganRequestBody = inputKeterangan.toRequestBody("text/plain".toMediaType())
-                val peranRequestBody = inputPeran.toRequestBody("text/plain".toMediaType())
-                val avatarRequestBody = "null".toRequestBody("text/plain".toMediaType())
+                // Create PahlawanData object
+                val pahlawanData = PahlawanData(
+                    nama = inputName,
+                    tgl_lahir = inputLahir,
+                    tgl_wafat = inputWafat,
+                    keterangan = inputKeterangan,
+                    peran = inputPeran,
+                    avatar = null
+                )
 
-                val formDataMap = mutableMapOf<String, String>()
-                formDataMap["nama"] = "string"
-                formDataMap["tgl_lahir"] = "string"
-                formDataMap["tgl_wafat"] = "string"
-                formDataMap["keterangan"] = "string"
-                formDataMap["peran"] = "string"
-//                formDataMap["avatar"] = null
+                viewModel.addDataPahlawan(token, pahlawanData)
 
-                viewModel.addDataPahlawan(token, formDataMap)
+                viewModel.responseAddDataPahlawan.observe(this) { addData ->
+                    viewModel.addImagePahlawan(token, imageMultipart, "api::ebook-pahlawan.ebook-pahlawan", addData.data?.id.toString(), "avatar")
 
-//                viewModel.responseAddDataPahlawan.observe(this) {
-//                    viewModel.addImagePahlawan(token, imageMultipart, "api::ebook-pahlawan.ebook-pahlawan", it.data?.id.toString(), "avatar")
-//                }
+                    viewModel.responseAddImagePahlawan.observe(this) { addImage ->
+                        if (addImage){
+                            showToast(this, "Berhasil!")
+                        }
+                    }
+                }
 
             } else {
                 if (inputName.isEmpty()) {
@@ -123,5 +140,9 @@ class PracticeActivity : AppCompatActivity() {
         } else {
             showToast(this@PracticeActivity, "Upload gambar terlebih dahulu")
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

@@ -8,10 +8,34 @@ data class FileResponse(
 	val fileResponse: List<FileResponseItem?>? = null
 )
 
-data class Formats(
+data class Thumbnail(
 
-	@field:SerializedName("thumbnail")
-	val thumbnail: Thumbnail? = null
+	@field:SerializedName("ext")
+	val ext: String? = null,
+
+	@field:SerializedName("path")
+	val path: Any? = null,
+
+	@field:SerializedName("size")
+	val size: Any? = null,
+
+	@field:SerializedName("mime")
+	val mime: String? = null,
+
+	@field:SerializedName("name")
+	val name: String? = null,
+
+	@field:SerializedName("width")
+	val width: Int? = null,
+
+	@field:SerializedName("url")
+	val url: String? = null,
+
+	@field:SerializedName("hash")
+	val hash: String? = null,
+
+	@field:SerializedName("height")
+	val height: Int? = null
 )
 
 data class FileResponseItem(
@@ -68,32 +92,8 @@ data class FileResponseItem(
 	val updatedAt: String? = null
 )
 
-data class Thumbnail(
+data class Formats(
 
-	@field:SerializedName("ext")
-	val ext: String? = null,
-
-	@field:SerializedName("path")
-	val path: Any? = null,
-
-	@field:SerializedName("size")
-	val size: Any? = null,
-
-	@field:SerializedName("mime")
-	val mime: String? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("width")
-	val width: Int? = null,
-
-	@field:SerializedName("url")
-	val url: String? = null,
-
-	@field:SerializedName("hash")
-	val hash: String? = null,
-
-	@field:SerializedName("height")
-	val height: Int? = null
+	@field:SerializedName("thumbnail")
+	val thumbnail: Thumbnail? = null
 )
