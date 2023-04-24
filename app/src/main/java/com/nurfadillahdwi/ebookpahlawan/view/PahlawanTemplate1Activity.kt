@@ -1,19 +1,19 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPahlawanTemplate1Binding
+import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
+import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 
 class PahlawanTemplate1Activity : AppCompatActivity() {
     private lateinit var binding: ActivityPahlawanTemplate1Binding
@@ -35,7 +35,8 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
 
         viewModel.getPahlawans(token)
         viewModel.responsePahlawan.observe(this) {
-            it.data?.get(2).let {
+            totalPahlawan = it.data?.size
+            it.data?.get(indexPahlawan).let {
                 binding.namaPahlawan.text = it?.attributes?.nama.toString()
                 binding.lahirPahlawan.text = it?.attributes?.tglLahir.toString()
                 binding.wafatPahlawan.text = it?.attributes?.tglWafat.toString()
@@ -69,13 +70,39 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, InstruksiContohActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideRight(this)
+                    when (indexPahlawan) {
+                        0 -> {
+                            val i = Intent(this, InstruksiContohActivity::class.java)
+                            startActivity(i)
+                            Animatoo.animateSlideRight(this)
+                        }
+                        else -> {
+                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                            startActivity(i)
+                            Animatoo.animateSlideRight(this)
+                            indexPahlawan--
+                        }
+                    }
                 } else if (x1 > x2) {
-                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideLeft(this)
+                    if (indexPahlawan == (totalPahlawan?.div(2))) {
+                        val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                        indexPahlawan++
+                    }
+//                    else if (indexPahlawan == 4 || indexPahlawan == 8 || indexPahlawan == 12 || indexPahlawan == 16 || indexPahlawan == 20 || indexPahlawan == 24){
+//                        val i = Intent(this, QouteActivity::class.java)
+//                        startActivity(i)
+//                        Animatoo.animateSlideLeft(this)
+//                        indexPahlawan++
+//                    }
+                    else {
+                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                        indexPahlawan++
+                    }
+
                 }
             }
         }

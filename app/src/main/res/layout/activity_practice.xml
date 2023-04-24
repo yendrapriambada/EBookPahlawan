@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,133 +7,140 @@
     android:background="@drawable/ic_bg_brown"
     tools:context=".view.PracticeActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/add_photo"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_practice_img_placeholder" />
+
+    <ImageView
+        android:id="@+id/imageView31"
+        android:layout_width="284dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/add_photo"
+        app:layout_constraintStart_toStartOf="@+id/add_photo"
+        app:layout_constraintTop_toBottomOf="@+id/add_photo"
+        app:srcCompat="@drawable/ic_practice_text" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView31">
 
-        <ImageView
-            android:id="@+id/add_photo"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="24dp"
-            android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_practice_img_placeholder" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="284dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="@+id/add_photo"
-            app:layout_constraintStart_toStartOf="@+id/add_photo"
-            app:layout_constraintTop_toBottomOf="@+id/add_photo"
-            app:srcCompat="@drawable/ic_practice_text" />
+            <EditText
+                android:id="@+id/edt_HeroName"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
+                android:background="@drawable/ic_practice_bg_edtext"
+                android:ems="10"
+                android:hint="Masukan nama pahlawan"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/edt_HeroName"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="48dp"
-            android:background="@drawable/ic_practice_bg_edtext"
-            android:ems="10"
-            android:hint="Masukan nama pahlawan"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView31" />
+            <EditText
+                android:id="@+id/edt_heroBirthDate"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_practice_bg_edtext"
+                android:ems="10"
+                android:hint="Masukan tanggal lahir pahlawan"
+                android:padding="12dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/edt_HeroName"
+                app:layout_constraintStart_toStartOf="@+id/edt_HeroName"
+                app:layout_constraintTop_toBottomOf="@+id/edt_HeroName" />
 
-        <EditText
-            android:id="@+id/edt_heroBirthDate"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_practice_bg_edtext"
-            android:ems="10"
-            android:hint="Masukan tanggal lahir pahlawan"
-            android:padding="12dp"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/edt_HeroName"
-            app:layout_constraintStart_toStartOf="@+id/edt_HeroName"
-            app:layout_constraintTop_toBottomOf="@+id/edt_HeroName" />
+            <EditText
+                android:id="@+id/edt_heroDeceasedDate"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_practice_bg_edtext"
+                android:ems="10"
+                android:hint="Masukan tanggal wafatnya pahlawan"
+                android:padding="12dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/edt_heroBirthDate"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edt_heroBirthDate"
+                app:layout_constraintTop_toBottomOf="@+id/edt_heroBirthDate" />
 
-        <EditText
-            android:id="@+id/edt_heroDeceasedDate"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_practice_bg_edtext"
-            android:ems="10"
-            android:hint="Masukan tanggal wafatnya pahlawan"
-            android:padding="12dp"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/edt_heroBirthDate"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edt_heroBirthDate"
-            app:layout_constraintTop_toBottomOf="@+id/edt_heroBirthDate" />
+            <EditText
+                android:id="@+id/edt_heroKeterangan"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_practice_bg_edtext"
+                android:ems="10"
+                android:hint="Masukkan keterangan pahlawan"
+                android:padding="12dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/edt_heroBirthDate"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edt_heroBirthDate"
+                app:layout_constraintTop_toBottomOf="@+id/edt_heroDeceasedDate" />
 
-        <EditText
-            android:id="@+id/edt_heroKeterangan"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_practice_bg_edtext"
-            android:ems="10"
-            android:hint="Masukkan keterangan pahlawan"
-            android:padding="12dp"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/edt_heroBirthDate"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/edt_heroBirthDate"
-            app:layout_constraintTop_toBottomOf="@+id/edt_heroDeceasedDate" />
+            <EditText
+                android:id="@+id/edt_heroPeran"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_practice_bg_edtext"
+                android:ems="10"
+                android:hint="Masukan peran dan deskripsi pahlawan"
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/edt_heroDeceasedDate"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/edt_heroDeceasedDate"
+                app:layout_constraintTop_toBottomOf="@+id/edt_heroKeterangan" />
 
-        <EditText
-            android:id="@+id/edt_heroPeran"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_practice_bg_edtext"
-            android:ems="10"
-            android:hint="Masukan peran dan deskripsi pahlawan"
-            android:inputType="textMultiLine"
-            android:padding="12dp"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/edt_heroDeceasedDate"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/edt_heroDeceasedDate"
-            app:layout_constraintTop_toBottomOf="@+id/edt_heroKeterangan" />
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="150dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/ic_practice_btn_submit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/edt_heroPeran"
+                app:layout_constraintStart_toStartOf="@+id/edt_heroPeran"
+                app:layout_constraintTop_toBottomOf="@+id/edt_heroPeran" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="150dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/ic_practice_btn_submit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/edt_heroPeran"
-            app:layout_constraintStart_toStartOf="@+id/edt_heroPeran"
-            app:layout_constraintTop_toBottomOf="@+id/edt_heroPeran" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

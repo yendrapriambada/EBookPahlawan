@@ -3,11 +3,13 @@ package com.nurfadillahdwi.ebookpahlawan.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPracticeBinding
 import com.nurfadillahdwi.ebookpahlawan.helper.reduceFileImage
 import com.nurfadillahdwi.ebookpahlawan.helper.showToast
@@ -19,6 +21,8 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class PracticeActivity : AppCompatActivity() {
+    private var x1: Float = 0.0F
+    private var x2: Float = 0.0F
     private lateinit var binding: ActivityPracticeBinding
     private lateinit var viewModel: PracticeViewModel
     private var getFile: File? = null
@@ -144,5 +148,27 @@ class PracticeActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
+        when (touchEvent.action) {
+            MotionEvent.ACTION_DOWN -> {
+                x1 = touchEvent.x
+            }
+            MotionEvent.ACTION_UP -> {
+                x2 = touchEvent.x
+                if (x1 < x2) {
+                    val i = Intent(this, MKCActivity::class.java)
+                    startActivity(i)
+                    Animatoo.animateSlideRight( this)
+                } else if (x1 > x2) {
+                    val i = Intent(this, ReflectionActivity::class.java)
+                    startActivity(i)
+                    Animatoo.animateSlideLeft( this)
+
+                }
+            }
+        }
+        return false
     }
 }

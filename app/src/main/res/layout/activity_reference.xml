@@ -29,14 +29,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/home"
             android:layout_width="169dp"
             android:layout_height="70dp"
             android:layout_marginBottom="60dp"
             android:background="@drawable/ic_reference_bg_back_btn" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/exit"
             android:layout_width="169dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
