@@ -33,7 +33,7 @@
         android:id="@+id/foto_pahlawan"
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:src="@drawable/img_nuku"
+        tools:src="@tools:sample/avatars"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="@+id/banner"
         app:layout_constraintStart_toStartOf="@+id/banner"
