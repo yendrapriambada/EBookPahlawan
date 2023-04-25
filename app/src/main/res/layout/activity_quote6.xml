@@ -20,6 +20,7 @@
         android:id="@+id/imageView25"
         android:layout_width="match_parent"
         android:layout_height="473dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

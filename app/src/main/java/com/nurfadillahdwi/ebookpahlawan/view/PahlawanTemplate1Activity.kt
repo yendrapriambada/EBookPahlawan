@@ -70,42 +70,50 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    when (indexPahlawan) {
-                        0 -> {
-                            val i = Intent(this, InstruksiContohActivity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                        }
-                        else -> {
-                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                            indexPahlawan--
-                        }
-                    }
-                } else if (x1 > x2) {
-                    if (indexPahlawan == (totalPahlawan?.div(2))) {
-                        val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                    if (indexPahlawan == 0) {
+                        val i = Intent(this, InstruksiContohActivity::class.java)
                         startActivity(i)
-                        Animatoo.animateSlideLeft(this)
-                        indexPahlawan++
+                        Animatoo.animateSlideRight(this)
                     }
-//                    else if (indexPahlawan == 4 || indexPahlawan == 8 || indexPahlawan == 12 || indexPahlawan == 16 || indexPahlawan == 20 || indexPahlawan == 24){
-//                        val i = Intent(this, QouteActivity::class.java)
-//                        startActivity(i)
-//                        Animatoo.animateSlideLeft(this)
-//                        indexPahlawan++
-//                    }
+                    else if (indexPahlawan == 4 || indexPahlawan == 8 || indexPahlawan == 12) {
+                        val i = Intent(this, QouteActivity::class.java)
+                        i.putExtra(EXTRA_MESSAGE, "after")
+                        startActivity(i)
+                        Animatoo.animateSlideRight(this)
+                        indexPahlawan--
+                    }
                     else {
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
-                        Animatoo.animateSlideLeft(this)
-                        indexPahlawan++
+                        Animatoo.animateSlideRight(this)
+                        indexPahlawan--
                     }
-
                 }
+            else if (x1 > x2) { // next
+                if (indexPahlawan == (totalPahlawan?.div(2))) {
+                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                    startActivity(i)
+                    Animatoo.animateSlideLeft(this)
+                    indexPahlawan++
+                } else if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
+                    val i = Intent(this, QouteActivity::class.java)
+                    i.putExtra(EXTRA_MESSAGE, "before")
+                    startActivity(i)
+                    Animatoo.animateSlideLeft(this)
+                } else {
+                    val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                    startActivity(i)
+                    Animatoo.animateSlideLeft(this)
+                    indexPahlawan++
+                }
+
             }
         }
-        return false
     }
+    return false
+}
+
+companion object {
+    const val EXTRA_MESSAGE = "extra_message"
+}
 }

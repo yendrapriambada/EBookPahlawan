@@ -2,7 +2,6 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPahlawanTemplate2Binding
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
+import com.nurfadillahdwi.ebookpahlawan.view.PahlawanTemplate1Activity.Companion.EXTRA_MESSAGE
 
 
 class PahlawanTemplate2Activity : AppCompatActivity() {
@@ -77,6 +77,12 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
                         indexPahlawan--
+                    } else if (indexPahlawan == 16 || indexPahlawan == 20 || indexPahlawan == 24) {
+                        val i = Intent(this, QouteActivity::class.java)
+                        i.putExtra(EXTRA_MESSAGE, "after")
+                        startActivity(i)
+                        Animatoo.animateSlideRight(this)
+                        indexPahlawan--
                     } else {
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
@@ -85,19 +91,15 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                     }
                 } else if (x1 > x2) {
                     if (indexPahlawan == totalPahlawan!! - 1) {
-                        Log.e("Index: ", indexPahlawan.toString())
-                        Log.e("total data: ", totalPahlawan.toString())
                         val i = Intent(this, MKCActivity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                    }
-//                    else if (indexPahlawan == 4 || indexPahlawan == 8 || indexPahlawan == 12 || indexPahlawan == 16 || indexPahlawan == 20 || indexPahlawan == 24){
-//                        val i = Intent(this, QouteActivity::class.java)
-//                        startActivity(i)
-//                        Animatoo.animateSlideLeft(this)
-//                        indexPahlawan++
-//                    }
-                    else {
+                    } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                        val i = Intent(this, QouteActivity::class.java)
+                        i.putExtra(EXTRA_MESSAGE, "before")
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                    } else {
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)

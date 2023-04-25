@@ -32,6 +32,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
+            android:name=".view.QouteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
             android:name=".view.PahlawanTemplate2Activity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
