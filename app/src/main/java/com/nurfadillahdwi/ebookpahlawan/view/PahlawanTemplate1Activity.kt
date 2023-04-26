@@ -2,6 +2,8 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -66,6 +68,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
+        Log.d("index", indexPahlawan.toString())
         when (touchEvent.action) {
             MotionEvent.ACTION_DOWN -> {
                 x1 = touchEvent.x
@@ -73,50 +76,46 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    if (indexPahlawan == 0) {
+                    if (indexPahlawan == 0) { //awalan
                         val i = Intent(this, InstruksiContohActivity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                    }
-                    else if (indexPahlawan == 4 || indexPahlawan == 8 || indexPahlawan == 12) {
+                    } else if (indexPahlawan % 4 == 0) { //quote
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "after")
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
+                    } else { // back
                         indexPahlawan--
-                    }
-                    else {
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                        indexPahlawan--
                     }
-                }
-            else if (x1 > x2) { // next
-                if (indexPahlawan == (totalPahlawan?.div(2))) {
-                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideLeft(this)
-                    indexPahlawan++
-                } else if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
-                    val i = Intent(this, QouteActivity::class.java)
-                    i.putExtra(EXTRA_MESSAGE, "before")
-                    startActivity(i)
-                    Animatoo.animateSlideLeft(this)
-                } else {
-                    val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideLeft(this)
-                    indexPahlawan++
-                }
+                } else if (x1 > x2) { // next
+                    if (indexPahlawan.plus(1) % 4 == 0 && indexPahlawan!=0) { // quote
+                        val i = Intent(this, QouteActivity::class.java)
+                        i.putExtra(EXTRA_MESSAGE, "before")
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                    } else if (indexPahlawan == (totalPahlawan?.div(2))) { //next
+                        indexPahlawan++
+                        val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                    } else { //next
+                        indexPahlawan++
+                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                    }
 
+                }
             }
         }
+        return false
     }
-    return false
-}
 
-companion object {
-    const val EXTRA_MESSAGE = "extra_message"
-}
+    companion object {
+        const val EXTRA_MESSAGE = "extra_message"
+    }
 }

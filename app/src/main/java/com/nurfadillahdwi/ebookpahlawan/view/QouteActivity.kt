@@ -2,11 +2,13 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
+import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 import com.nurfadillahdwi.ebookpahlawan.view.PahlawanTemplate1Activity.Companion.EXTRA_MESSAGE
 
 class QouteActivity : AppCompatActivity() {
@@ -19,13 +21,13 @@ class QouteActivity : AppCompatActivity() {
 
         from = intent.getStringExtra(EXTRA_MESSAGE)
 
-        when (indexPahlawan) {
-            3 -> setContentView(R.layout.activity_qoute)
-            7 -> setContentView(R.layout.activity_quote2)
-            11 -> setContentView(R.layout.activity_quote3)
-            15 -> setContentView(R.layout.activity_quote4)
-            19 -> setContentView(R.layout.activity_quote5)
-            23 -> setContentView(R.layout.activity_quote6)
+        when (indexPahlawan?.minus(1)?.div(4)) {
+            0 -> setContentView(R.layout.activity_qoute)
+            1 -> setContentView(R.layout.activity_quote2)
+            2 -> setContentView(R.layout.activity_quote3)
+            3 -> setContentView(R.layout.activity_quote4)
+            4 -> setContentView(R.layout.activity_quote5)
+            5 -> setContentView(R.layout.activity_quote6)
             else -> setContentView(R.layout.activity_qoute)
         }
     }
@@ -39,51 +41,48 @@ class QouteActivity : AppCompatActivity() {
                 x2 = touchEvent.x
                 if (x1 < x2) {  // back
                     if (from == "before") { // jika back lagi ke halaman barusan
-                        if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
+                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
                             val i = Intent(this, PahlawanTemplate1Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideRight(this)
-                        } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                        } else {
                             val i = Intent(this, PahlawanTemplate2Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideRight(this)
                         }
                     } else if (from == "after") {
-                        if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
+                        indexPahlawan--
+                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
                             val i = Intent(this, PahlawanTemplate1Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideRight(this)
-                        } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                        } else {
                             val i = Intent(this, PahlawanTemplate2Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideRight(this)
                         }
                     }
-
                 } else if (x1 > x2) {   //next
                     if (from == "after") { // jika next page ke halaman barusan
-                        if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
+                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
                             val i = Intent(this, PahlawanTemplate1Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideLeft(this)
-                            indexPahlawan++
-                        } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                        } else {
                             val i = Intent(this, PahlawanTemplate2Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideLeft(this)
-                            indexPahlawan++
                         }
                     } else if (from == "before") {
-                        if (indexPahlawan == 3 || indexPahlawan == 7 || indexPahlawan == 11) {
+                        indexPahlawan++
+                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
                             val i = Intent(this, PahlawanTemplate1Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideLeft(this)
-                            indexPahlawan++
-                        } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                        } else {
                             val i = Intent(this, PahlawanTemplate2Activity::class.java)
                             startActivity(i)
                             Animatoo.animateSlideLeft(this)
-                            indexPahlawan++
                         }
                     }
                 }

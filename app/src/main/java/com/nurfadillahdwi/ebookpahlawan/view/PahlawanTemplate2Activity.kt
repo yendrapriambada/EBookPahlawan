@@ -79,34 +79,32 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                        indexPahlawan--
-                    } else if (indexPahlawan == 16 || indexPahlawan == 20 || indexPahlawan == 24) {
+                    } else if (indexPahlawan % 4 == 0) {
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "after")
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                        indexPahlawan--
                     } else {
+                        indexPahlawan--
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                        indexPahlawan--
                     }
                 } else if (x1 > x2) {
-                    if (indexPahlawan == totalPahlawan!! - 1) {
+                    if (indexPahlawan == totalPahlawan!!.minus(1)) {
                         val i = Intent(this, MKCActivity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                    } else if (indexPahlawan == 15 || indexPahlawan == 19 || indexPahlawan == 23) {
+                    } else if (indexPahlawan.plus(1) % 4 == 0) {
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "before")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
                     } else {
+                        indexPahlawan++
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                        indexPahlawan++
                     }
 
                 }
