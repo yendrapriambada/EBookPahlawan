@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
                     val i = Intent(this@MainActivity, AddIdentityActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this) //fire the zoom animation
-
                 }
             }
         }

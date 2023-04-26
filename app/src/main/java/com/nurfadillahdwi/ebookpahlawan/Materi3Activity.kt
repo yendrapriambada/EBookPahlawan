@@ -13,6 +13,7 @@ class Materi3Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_materi3)
+        supportActionBar?.hide()
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {

@@ -21,6 +21,7 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPahlawanTemplate2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         val constraintLayout = ConstraintLayout(this)
 

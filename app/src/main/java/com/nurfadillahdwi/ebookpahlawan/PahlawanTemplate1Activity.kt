@@ -13,6 +13,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pahlawan_template1)
+        supportActionBar?.hide()
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
