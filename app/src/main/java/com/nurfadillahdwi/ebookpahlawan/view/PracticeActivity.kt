@@ -48,6 +48,9 @@ class PracticeActivity : AppCompatActivity() {
         viewModel.onFailure.observe(this) {
             if (it.contains("Expected BEGIN_OBJECT but was BEGIN_ARRAY")){
                 showToast(this, "Berhasil!")
+
+                val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                startActivity(i)
             }
             else{
                 AlertDialog.Builder(this).apply {
@@ -120,8 +123,13 @@ class PracticeActivity : AppCompatActivity() {
                     viewModel.responseAddImagePahlawan.observe(this) { addImage ->
                         if (addImage){
                             showToast(this, "Berhasil!")
+
+                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                            startActivity(i)
                         }
                     }
+                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                    startActivity(i)
                 }
 
             } else {
@@ -165,7 +173,6 @@ class PracticeActivity : AppCompatActivity() {
                     val i = Intent(this, ReflectionActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
-
                 }
             }
         }
