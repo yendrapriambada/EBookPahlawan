@@ -8,9 +8,10 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("api/ebook-pahlawans?fields[0]=nama&fields[1]=tgl_lahir&fields[2]=tgl_wafat&fields[3]=keterangan&fields[4]=peran&pagination[limit]=50&populate[avatar][fields][0]=url")
+    @GET("api/ebook-pahlawans?fields[0]=nama&fields[1]=tgl_lahir&fields[2]=tgl_wafat&fields[3]=keterangan&fields[4]=peran&pagination[limit]=50&populate[avatar][fields][0]=url&sort[0]=id&filters[nama_siswa][\$eqi][0]=all")
     fun getPahlawan(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("filters[nama_siswa][\$eqi][1]") namaSiswa: String
     ): Call<PahlawansResponse>
 
     @Multipart

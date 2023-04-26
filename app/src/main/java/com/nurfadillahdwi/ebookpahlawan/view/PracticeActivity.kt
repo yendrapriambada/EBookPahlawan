@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPracticeBinding
+import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.reduceFileImage
 import com.nurfadillahdwi.ebookpahlawan.helper.showToast
 import com.nurfadillahdwi.ebookpahlawan.helper.uriToFile
@@ -49,6 +50,7 @@ class PracticeActivity : AppCompatActivity() {
             if (it.contains("Expected BEGIN_OBJECT but was BEGIN_ARRAY")){
                 showToast(this, "Berhasil!")
 
+                indexPahlawan++
                 val i = Intent(this, PahlawanTemplate2Activity::class.java)
                 startActivity(i)
             }
@@ -123,13 +125,8 @@ class PracticeActivity : AppCompatActivity() {
                     viewModel.responseAddImagePahlawan.observe(this) { addImage ->
                         if (addImage){
                             showToast(this, "Berhasil!")
-
-                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                            startActivity(i)
                         }
                     }
-                    val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                    startActivity(i)
                 }
 
             } else {

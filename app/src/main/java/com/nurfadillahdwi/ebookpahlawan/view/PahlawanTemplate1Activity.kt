@@ -29,11 +29,14 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[Pahlawan1TemplateViewModel::class.java]
         setContentView(binding.root)
 
+        val sharedPref = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
+        val namaSiswa = sharedPref.getString("nama", "default").toString()
+
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        viewModel.getPahlawans(token)
+        viewModel.getPahlawans(token, namaSiswa)
         viewModel.responsePahlawan.observe(this) {
             totalPahlawan = it.data?.size
             it.data?.get(indexPahlawan).let {

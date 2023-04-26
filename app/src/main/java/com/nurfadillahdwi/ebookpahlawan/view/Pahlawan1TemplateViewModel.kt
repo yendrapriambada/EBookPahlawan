@@ -19,10 +19,10 @@ class Pahlawan1TemplateViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun getPahlawans(token: String) {
+    fun getPahlawans(token: String, namaSiswa: String) {
         _isLoading.value = true
 
-        val client = ApiConfig.getApiService().getPahlawan(setupToken(token))
+        val client = ApiConfig.getApiService().getPahlawan(setupToken(token), namaSiswa)
         client.enqueue(object : Callback<PahlawansResponse> {
             override fun onResponse(
                 call: Call<PahlawansResponse>,
