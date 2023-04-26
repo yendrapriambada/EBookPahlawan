@@ -6,5 +6,6 @@ data class PahlawanData(
     val tgl_wafat: String,
     val keterangan: String,
     val peran: String,
-    val avatar: String? // assuming avatar field is of type String
+    val avatar: String?, // assuming avatar field is of type String
+    val nama_siswa: String
 )

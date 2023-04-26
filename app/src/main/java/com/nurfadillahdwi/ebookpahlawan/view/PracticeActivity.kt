@@ -92,11 +92,14 @@ class PracticeActivity : AppCompatActivity() {
 
     private fun uploadData() {
         if (getFile != null) {
+            val sharedPref = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
+
             val inputName = binding.edtHeroName.text.toString()
             val inputLahir = binding.edtHeroBirthDate.text.toString()
             val inputWafat = binding.edtHeroDeceasedDate.text.toString()
             val inputKeterangan = binding.edtHeroKeterangan.text.toString()
             val inputPeran = binding.edtHeroPeran.text.toString()
+            val inputNamaSiswa = sharedPref.getString("nama", "default").toString()
             val file = reduceFileImage(getFile as File)
 
             if (inputName.isNotEmpty() && inputLahir.isNotEmpty() && inputWafat.isNotEmpty() && inputKeterangan.isNotEmpty() && inputPeran.isNotEmpty()) {
@@ -114,7 +117,8 @@ class PracticeActivity : AppCompatActivity() {
                     tgl_wafat = inputWafat,
                     keterangan = inputKeterangan,
                     peran = inputPeran,
-                    avatar = null
+                    avatar = null,
+                    nama_siswa = inputNamaSiswa
                 )
 
                 viewModel.addDataPahlawan(token, pahlawanData)
