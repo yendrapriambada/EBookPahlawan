@@ -23,15 +23,15 @@ class AddIdentityActivity : AppCompatActivity() {
 
         val sharedPref = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
         val editor = sharedPref.edit()
-        namaSiswa = sharedPref.getString("nama", "default").toString()
-        if (namaSiswa != "default" || namaSiswa.isNotEmpty()) {
+        namaSiswa = sharedPref.getString("nama", "Masukkan nama kamu!").toString()
+        if (namaSiswa != "Masukkan nama kamu!" || namaSiswa.isNotEmpty()) {
             binding.edtNama.text = namaSiswa.toEditable()
         }
 
         binding.btnMasuk.setOnClickListener {
             val namaUser = binding.edtNama.text.toString().trim()
 
-            if (namaUser.isEmpty()) {
+            if (namaUser.isEmpty() || namaUser == "Masukkan nama kamu!") {
                 binding.edtNama.error = "Masukkan nama kamu terlebih dahulu"
             } else {
                 editor.putString("nama", namaUser)
@@ -62,7 +62,7 @@ class AddIdentityActivity : AppCompatActivity() {
                     startActivity(i)
                     Animatoo.animateSlideRight(this)
                 } else if (x1 > x2) {
-                    if (namaSiswa == "default") {
+                    if (namaSiswa == "Masukkan nama kamu!") {
                         showToast(
                             this@AddIdentityActivity,
                             "Silahkan isi nama kamu terlebih dahulu"

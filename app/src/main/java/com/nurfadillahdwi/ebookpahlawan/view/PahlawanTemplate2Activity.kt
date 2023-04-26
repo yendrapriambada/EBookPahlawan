@@ -76,6 +76,7 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                 x2 = touchEvent.x
                 if (x1 < x2) {
                     if (indexPahlawan == (totalPahlawan?.div(2))) {
+                        indexPahlawan--
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
