@@ -67,7 +67,7 @@
         android:backgroundTint="#AC623D"
         android:fontFamily="@font/a_plainer_font"
         android:text="Masuk"
-        app:cornerRadius="15dp"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/edt_nama"
         app:layout_constraintStart_toStartOf="@+id/edt_nama" />

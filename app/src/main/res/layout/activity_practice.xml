@@ -117,17 +117,22 @@
                 app:layout_constraintStart_toStartOf="@+id/edt_heroDeceasedDate"
                 app:layout_constraintTop_toBottomOf="@+id/edt_heroKeterangan" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton"
                 android:layout_width="150dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/ic_practice_btn_submit"
+                android:padding="15dp"
+                android:backgroundTint="#AC623D"
+                android:fontFamily="@font/a_plainer_font"
+                android:text="Selesai"
+                app:cornerRadius="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/edt_heroPeran"
                 app:layout_constraintStart_toStartOf="@+id/edt_heroPeran"
                 app:layout_constraintTop_toBottomOf="@+id/edt_heroPeran" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
