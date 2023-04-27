@@ -37,8 +37,8 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-//        Log.d("index", indexPahlawan.toString())
-//        Log.d("indexdiv", totalPahlawan?.div(2).toString())
+        Log.d("index", indexPahlawan.toString())
+        Log.d("indexdiv", totalPahlawan?.div(2).toString())
 
         viewModel.getPahlawans(token, namaSiswa)
         viewModel.responsePahlawan.observe(this) {
@@ -83,7 +83,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                         Animatoo.animateSlideRight(this)
                     } else if (indexPahlawan % 4 == 0) { //quote
                         val i = Intent(this, QouteActivity::class.java)
-                        i.putExtra(EXTRA_MESSAGE, "after")
+                        i.putExtra(EXTRA_MESSAGE, "backward")
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
                     } else { // back
@@ -95,10 +95,10 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                 } else if (x1 > x2) { // next
                     if (indexPahlawan.plus(1) % 4 == 0 && indexPahlawan!=0) { // quote
                         val i = Intent(this, QouteActivity::class.java)
-                        i.putExtra(EXTRA_MESSAGE, "before")
+                        i.putExtra(EXTRA_MESSAGE, "forward")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                    } else if ((totalPahlawan?.div(2))!! < indexPahlawan) { //next
+                    } else if (indexPahlawan.minus(1) >= (totalPahlawan?.div(2))!!) { //next
                         indexPahlawan++
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)

@@ -40,50 +40,28 @@ class QouteActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {  // back
-                    if (from == "before") { // jika back lagi ke halaman barusan
-                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
-                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                        } else {
-                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                        }
-                    } else if (from == "after") {
+                    if (from == "backward")
                         indexPahlawan--
-                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
-                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                        } else {
-                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideRight(this)
-                        }
+                    if (indexPahlawan < totalPahlawan?.div(2)!!) {
+                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideRight(this)
+                    } else {
+                        val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideRight(this)
                     }
                 } else if (x1 > x2) {   //next
-                    if (from == "after") { // jika next page ke halaman barusan
-                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
-                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideLeft(this)
-                        } else {
-                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideLeft(this)
-                        }
-                    } else if (from == "before") {
+                    if (from == "forward")
                         indexPahlawan++
-                        if (totalPahlawan?.div(2)!! >= indexPahlawan) {
-                            val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideLeft(this)
-                        } else {
-                            val i = Intent(this, PahlawanTemplate2Activity::class.java)
-                            startActivity(i)
-                            Animatoo.animateSlideLeft(this)
-                        }
+                    if (indexPahlawan >= (totalPahlawan?.div(2))!!) {
+                        val i = Intent(this, PahlawanTemplate2Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
+                    } else {
+                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                        startActivity(i)
+                        Animatoo.animateSlideLeft(this)
                     }
                 }
             }

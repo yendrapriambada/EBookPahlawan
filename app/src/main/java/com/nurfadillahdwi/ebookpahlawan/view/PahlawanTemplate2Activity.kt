@@ -38,8 +38,8 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-//        Log.d("index", indexPahlawan.toString())
-//        Log.d("indexdiv", totalPahlawan?.div(2).toString())
+        Log.d("index", indexPahlawan.toString())
+        Log.d("indexdiv", totalPahlawan?.div(2).toString())
 
 
         viewModel.getPahlawans(token, namaSiswa)
@@ -79,14 +79,14 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    if (totalPahlawan?.div(2)!! <= indexPahlawan) {
-                        indexPahlawan--
-                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
+                    if (indexPahlawan % 4 == 0) {
+                        val i = Intent(this, QouteActivity::class.java)
+                        i.putExtra(EXTRA_MESSAGE, "backward")
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
-                    } else if (indexPahlawan % 4 == 0) {
-                        val i = Intent(this, QouteActivity::class.java)
-                        i.putExtra(EXTRA_MESSAGE, "after")
+                    } else if (indexPahlawan < totalPahlawan?.div(2)!!) {
+                        indexPahlawan--
+                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideRight(this)
                     } else {
@@ -102,7 +102,7 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                         Animatoo.animateSlideLeft(this)
                     } else if (indexPahlawan.plus(1) % 4 == 0) {
                         val i = Intent(this, QouteActivity::class.java)
-                        i.putExtra(EXTRA_MESSAGE, "before")
+                        i.putExtra(EXTRA_MESSAGE, "forward")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
                     } else {
