@@ -28,6 +28,19 @@ class AddIdentityActivity : AppCompatActivity() {
             binding.edtNama.text = namaSiswa.toEditable()
         }
 
+        binding.edtNama.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                // Clear default text when user focuses on the EditText
+                if (binding.edtNama.text.toString() == "Masukkan nama kamu!") {
+                    binding.edtNama.text.clear()
+                }
+            } else {
+                // Set default text if EditText is empty when user loses focus
+                if (binding.edtNama.text.isEmpty()) {
+                    binding.edtNama.setText("Masukkan nama kamu!")
+                }
+            }
+        }
         binding.btnMasuk.setOnClickListener {
             val namaUser = binding.edtNama.text.toString().trim()
 
