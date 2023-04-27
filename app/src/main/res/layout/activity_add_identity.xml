@@ -51,7 +51,6 @@
         android:background="@drawable/bg_edtext"
         android:fontFamily="@font/a_plainer_font"
         android:gravity="center"
-        android:hint="Ketikkan sesuatu . . ."
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btn_masuk"
