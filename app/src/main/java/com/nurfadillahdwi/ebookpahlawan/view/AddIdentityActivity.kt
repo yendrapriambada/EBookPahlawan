@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.MotionEvent
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityAddIdentityBinding
@@ -20,6 +21,10 @@ class AddIdentityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddIdentityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        onBackPressedDispatcher.addCallback(this) {
+            backIntent()
+        }
 
         val sharedPref = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
         val editor = sharedPref.edit()
@@ -53,6 +58,7 @@ class AddIdentityActivity : AppCompatActivity() {
                 val i = Intent(this, KeteranganActivity::class.java)
                 startActivity(i)
                 Animatoo.animateSlideLeft(this)
+                finish()
 
                 Toast.makeText(
                     applicationContext,
@@ -63,6 +69,13 @@ class AddIdentityActivity : AppCompatActivity() {
         }
     }
 
+    private fun backIntent() {
+        val i = Intent(this@AddIdentityActivity, MainActivity::class.java)
+        startActivity(i)
+        Animatoo.animateSlideRight(this@AddIdentityActivity)
+        finish()
+    }
+
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
         when (touchEvent.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -71,9 +84,7 @@ class AddIdentityActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, MainActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideRight(this)
+                    backIntent()
                 } else if (x1 > x2) {
                     if (namaSiswa == "Masukkan nama kamu!") {
                         showToast(
@@ -84,6 +95,7 @@ class AddIdentityActivity : AppCompatActivity() {
                         val i = Intent(this, KeteranganActivity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
+                        finish()
                     }
                 }
             }

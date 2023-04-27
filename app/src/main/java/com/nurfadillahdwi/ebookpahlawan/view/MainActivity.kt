@@ -29,14 +29,11 @@ class MainActivity : AppCompatActivity() {
             }
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
-                if (x1 < x2) {
-//                    val i = Intent(this@MainActivity, SwipeLeft::class.java)
-//                    startActivity(i)
-                } else if (x1 > x2) {
+                if (x1 > x2) {
                     val i = Intent(this@MainActivity, AddIdentityActivity::class.java)
                     startActivity(i)
-                    Animatoo.animateSlideLeft( this) //fire the zoom animation
-
+                    Animatoo.animateSlideLeft(this)
+                    finish()
                 }
             }
         }

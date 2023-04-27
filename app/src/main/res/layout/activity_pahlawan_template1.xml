@@ -24,10 +24,10 @@
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="24dp"
-        tools:src="@tools:sample/avatars"
         app:layout_constraintEnd_toEndOf="@+id/banner"
         app:layout_constraintStart_toStartOf="@+id/banner"
-        app:layout_constraintTop_toBottomOf="@id/banner" />
+        app:layout_constraintTop_toBottomOf="@id/banner"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/nama_pahlawan"
@@ -38,8 +38,8 @@
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/a_plainer_font"
         android:gravity="center"
-        android:textAllCaps="true"
         android:text="ABDUL KADIR RADEN TEMENGGUNG"
+        android:textAllCaps="true"
         android:textColor="#FFDE58"
         android:textSize="20sp"
         android:textStyle="bold"

@@ -1,10 +1,10 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
+import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.R
 
@@ -14,6 +14,10 @@ class Materi2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_materi2)
+
+        onBackPressedDispatcher.addCallback(this) {
+            backIntent()
+        }
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
@@ -24,17 +28,22 @@ class Materi2Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, Materi1Activity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideRight( this)
+                    backIntent()
                 } else if (x1 > x2) {
                     val i = Intent(this, Materi3Activity::class.java)
                     startActivity(i)
-                    Animatoo.animateSlideLeft( this)
-
+                    Animatoo.animateSlideLeft(this)
+                    finish()
                 }
             }
         }
         return false
+    }
+
+    private fun backIntent() {
+        val i = Intent(this, Materi1Activity::class.java)
+        startActivity(i)
+        Animatoo.animateSlideRight(this)
+        finish()
     }
 }
