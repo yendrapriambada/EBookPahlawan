@@ -39,8 +39,6 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-        Log.d("index", indexPahlawan.toString())
-        Log.d("indexdiv", totalPahlawan?.div(2).toString())
 
 
         viewModel.getPahlawans(token, namaSiswa)
