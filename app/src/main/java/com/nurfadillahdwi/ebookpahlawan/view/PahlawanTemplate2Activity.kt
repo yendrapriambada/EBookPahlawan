@@ -2,6 +2,7 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -37,6 +38,9 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
+//        Log.d("index", indexPahlawan.toString())
+//        Log.d("indexdiv", totalPahlawan?.div(2).toString())
+
 
         viewModel.getPahlawans(token, namaSiswa)
         viewModel.responsePahlawan.observe(this) {
@@ -75,7 +79,7 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    if (indexPahlawan == (totalPahlawan?.div(2))) {
+                    if (totalPahlawan?.div(2)!! <= indexPahlawan) {
                         indexPahlawan--
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
@@ -107,7 +111,6 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
                     }
-
                 }
             }
         }

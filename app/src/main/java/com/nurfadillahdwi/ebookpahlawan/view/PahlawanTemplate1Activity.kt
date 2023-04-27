@@ -37,6 +37,8 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
+//        Log.d("index", indexPahlawan.toString())
+//        Log.d("indexdiv", totalPahlawan?.div(2).toString())
 
         viewModel.getPahlawans(token, namaSiswa)
         viewModel.responsePahlawan.observe(this) {
@@ -68,7 +70,6 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
-        Log.d("index", indexPahlawan.toString())
         when (touchEvent.action) {
             MotionEvent.ACTION_DOWN -> {
                 x1 = touchEvent.x
@@ -97,7 +98,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                         i.putExtra(EXTRA_MESSAGE, "before")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                    } else if (indexPahlawan == (totalPahlawan?.div(2))) { //next
+                    } else if ((totalPahlawan?.div(2))!! < indexPahlawan) { //next
                         indexPahlawan++
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
