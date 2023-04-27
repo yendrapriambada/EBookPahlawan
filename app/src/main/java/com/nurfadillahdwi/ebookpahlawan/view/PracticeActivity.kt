@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -66,6 +67,16 @@ class PracticeActivity : AppCompatActivity() {
                 }
             }
         }
+        onBackPressedDispatcher.addCallback(this) {
+            goBack()
+        }
+    }
+
+    private fun goBack() {
+        val i = Intent(this, MKCActivity::class.java)
+        startActivity(i)
+        Animatoo.animateSlideRight( this)
+        finish()
     }
 
     private fun startGallery() {
@@ -170,10 +181,12 @@ class PracticeActivity : AppCompatActivity() {
                     val i = Intent(this, MKCActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideRight( this)
+                    finish()
                 } else if (x1 > x2) {
                     val i = Intent(this, ReflectionActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
+                    finish()
                 }
             }
         }

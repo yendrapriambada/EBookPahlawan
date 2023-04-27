@@ -2,10 +2,9 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -37,9 +36,6 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
-        Log.d("index", indexPahlawan.toString())
-        Log.d("indexdiv", totalPahlawan?.div(2).toString())
-
         viewModel.getPahlawans(token, namaSiswa)
         viewModel.responsePahlawan.observe(this) {
             totalPahlawan = it.data?.size
@@ -63,6 +59,31 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                     .into(binding.fotoPahlawan)
             }
         }
+
+        onBackPressedDispatcher.addCallback(this) {
+            goBack()
+        }
+    }
+
+    private fun goBack() {
+        if (indexPahlawan == 0) {
+            val i = Intent(this, InstruksiContohActivity::class.java)
+            startActivity(i)
+            Animatoo.animateSlideRight(this)
+            finish()
+        } else if (indexPahlawan % 4 == 0) { //quote
+            val i = Intent(this, QouteActivity::class.java)
+            i.putExtra(EXTRA_MESSAGE, "backward")
+            startActivity(i)
+            Animatoo.animateSlideRight(this)
+            finish()
+        } else { // back
+            indexPahlawan--
+            val i = Intent(this, PahlawanTemplate1Activity::class.java)
+            startActivity(i)
+            Animatoo.animateSlideRight(this)
+            finish()
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -77,39 +98,27 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    if (indexPahlawan == 0) { //awalan
-                        val i = Intent(this, InstruksiContohActivity::class.java)
-                        startActivity(i)
-                        Animatoo.animateSlideRight(this)
-                    } else if (indexPahlawan % 4 == 0) { //quote
-                        val i = Intent(this, QouteActivity::class.java)
-                        i.putExtra(EXTRA_MESSAGE, "backward")
-                        startActivity(i)
-                        Animatoo.animateSlideRight(this)
-                    } else { // back
-                        indexPahlawan--
-                        val i = Intent(this, PahlawanTemplate1Activity::class.java)
-                        startActivity(i)
-                        Animatoo.animateSlideRight(this)
-                    }
+                    goBack()
                 } else if (x1 > x2) { // next
                     if (indexPahlawan.plus(1) % 4 == 0 && indexPahlawan!=0) { // quote
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "forward")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
+                        finish()
                     } else if (indexPahlawan.plus(2) > totalPahlawan?.div(2)!!) { //next
                         indexPahlawan++
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
+                        finish()
                     } else { //next
                         indexPahlawan++
                         val i = Intent(this, PahlawanTemplate1Activity::class.java)
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
+                        finish()
                     }
-
                 }
             }
         }

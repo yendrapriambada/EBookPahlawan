@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import androidx.activity.addCallback
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.R
 
@@ -13,6 +14,15 @@ class TentangActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang)
+        onBackPressedDispatcher.addCallback(this) {
+            goBack()
+        }
+    }
+
+    private fun goBack() {
+        val i = Intent(this, KeteranganActivity::class.java)
+        startActivity(i)
+        Animatoo.animateSlideRight( this)
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
@@ -23,9 +33,7 @@ class TentangActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, KeteranganActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideRight( this)
+                    goBack()
                 } else if (x1 > x2) {
                     val i = Intent(this, Materi1Activity::class.java)
                     startActivity(i)
