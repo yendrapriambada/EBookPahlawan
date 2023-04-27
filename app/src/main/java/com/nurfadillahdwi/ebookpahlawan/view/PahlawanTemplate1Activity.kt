@@ -98,7 +98,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                         i.putExtra(EXTRA_MESSAGE, "forward")
                         startActivity(i)
                         Animatoo.animateSlideLeft(this)
-                    } else if (indexPahlawan.minus(1) >= (totalPahlawan?.div(2))!!) { //next
+                    } else if (indexPahlawan.plus(2) > totalPahlawan?.div(2)!!) { //next
                         indexPahlawan++
                         val i = Intent(this, PahlawanTemplate2Activity::class.java)
                         startActivity(i)
