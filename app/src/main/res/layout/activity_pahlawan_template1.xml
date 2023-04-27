@@ -50,7 +50,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nama_pahlawan">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +69,6 @@
                 style="@style/regularFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
                 android:layout_marginTop="16dp"
                 android:text="Lahir"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -84,7 +88,6 @@
                 style="@style/regularFont"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
                 android:text="Sintang, Kalimantan Barat, 1771"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
