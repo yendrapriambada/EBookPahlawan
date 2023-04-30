@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPahlawanTemplate1Binding
+import com.nurfadillahdwi.ebookpahlawan.helper.flagPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 
@@ -57,6 +58,9 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.mipmap.ic_launcher_round)
                     .into(binding.fotoPahlawan)
+
+                // set User was here
+                flagPahlawan = true
             }
         }
 
