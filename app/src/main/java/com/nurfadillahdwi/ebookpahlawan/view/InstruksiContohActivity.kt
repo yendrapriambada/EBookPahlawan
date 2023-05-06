@@ -12,7 +12,6 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityInstruksiContohBinding
 import com.nurfadillahdwi.ebookpahlawan.helper.flagPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
-import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 
 class InstruksiContohActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInstruksiContohBinding
@@ -24,12 +23,14 @@ class InstruksiContohActivity : AppCompatActivity() {
         binding = ActivityInstruksiContohBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        indexPahlawan = 0
 
-        if (flagPahlawan){
+        if (flagPahlawan) {
             binding.btnSkip.visibility = View.VISIBLE
 
             val btnSkip =
-                ObjectAnimator.ofFloat(binding.btnSkip, "translationX", 500f, binding.btnSkip.x).setDuration(1000)
+                ObjectAnimator.ofFloat(binding.btnSkip, "translationX", 500f, binding.btnSkip.x)
+                    .setDuration(1000)
 
             AnimatorSet().apply {
                 playTogether(
