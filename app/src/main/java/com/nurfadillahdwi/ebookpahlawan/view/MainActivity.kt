@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
-            finish()
+            finishAndRemoveTask();
             return
         }
 
