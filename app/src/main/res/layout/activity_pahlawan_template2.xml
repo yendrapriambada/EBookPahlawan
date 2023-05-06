@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/banner"
-        android:layout_width="285dp"
-        android:layout_height="103dp"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
         android:layout_marginTop="36dp"
         android:src="@drawable/title_template2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         android:text="NUKU MUHAMMAD AMIRUDDIN"
         android:textAllCaps="true"
         android:textColor="#FF3131"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
