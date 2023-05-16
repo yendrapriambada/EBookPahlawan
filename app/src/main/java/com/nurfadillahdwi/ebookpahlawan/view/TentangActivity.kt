@@ -23,6 +23,7 @@ class TentangActivity : AppCompatActivity() {
         val i = Intent(this, KeteranganActivity::class.java)
         startActivity(i)
         Animatoo.animateSlideRight( this)
+        finish()
     }
 
     override fun onTouchEvent(touchEvent: MotionEvent): Boolean {
@@ -38,7 +39,7 @@ class TentangActivity : AppCompatActivity() {
                     val i = Intent(this, Materi1Activity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
-
+                    finish()
                 }
             }
         }

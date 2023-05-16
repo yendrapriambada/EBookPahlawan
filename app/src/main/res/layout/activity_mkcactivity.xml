@@ -26,4 +26,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_mkc_text" />
+
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-20dp"
+        android:background="@drawable/bg_peran"
+        android:paddingStart="30dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="18dp"
+        android:text="Loncat ke halaman Materi!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58000004"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

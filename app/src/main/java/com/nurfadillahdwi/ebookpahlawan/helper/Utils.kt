@@ -15,6 +15,7 @@ import java.util.*
 private const val FILENAME_FORMAT = "dd-MMM-yyyy"
 var indexPahlawan = 0
 var totalPahlawan: Int? = 0
+var flagPahlawan: Boolean = false
 
 fun setupToken(token: String): String {
     return "Bearer $token"
