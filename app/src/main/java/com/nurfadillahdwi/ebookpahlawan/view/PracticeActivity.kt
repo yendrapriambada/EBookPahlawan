@@ -73,7 +73,7 @@ class PracticeActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val i = Intent(this, MKCActivity::class.java)
+        val i = Intent(this, GuideActivity::class.java)
         startActivity(i)
         Animatoo.animateSlideRight( this)
         finish()
@@ -178,10 +178,7 @@ class PracticeActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                    val i = Intent(this, MKCActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideRight( this)
-                    finish()
+                   goBack()
                 } else if (x1 > x2) {
                     val i = Intent(this, ReflectionActivity::class.java)
                     startActivity(i)
