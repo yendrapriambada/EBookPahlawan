@@ -8,19 +8,20 @@ import androidx.activity.addCallback
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.R
 
-class TentangActivity : AppCompatActivity() {
+class KataPengantarActivity : AppCompatActivity() {
     private var x1: Float = 0.0F
     private var x2: Float = 0.0F
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tentang)
+        setContentView(R.layout.activity_kata_pengantar)
         onBackPressedDispatcher.addCallback(this) {
             goBack()
         }
     }
 
     private fun goBack() {
-        val i = Intent(this, KeteranganActivity::class.java)
+        val i = Intent(this, TentangActivity::class.java)
         startActivity(i)
         Animatoo.animateSlideRight( this)
         finish()
@@ -36,7 +37,7 @@ class TentangActivity : AppCompatActivity() {
                 if (x1 < x2) {
                     goBack()
                 } else if (x1 > x2) {
-                    val i = Intent(this, KataPengantarActivity::class.java)
+                    val i = Intent(this, DaftarIsiActivity::class.java)
                     startActivity(i)
                     Animatoo.animateSlideLeft( this)
                     finish()
