@@ -31,7 +31,7 @@ class ReferenceActivity : AppCompatActivity() {
     }
 
     private fun goBack() {
-        val i = Intent(this, ReflectionActivity::class.java)
+        val i = Intent(this, DaftarIsiActivity::class.java)
         startActivity(i)
         Animatoo.animateSlideRight(this)
         finish()

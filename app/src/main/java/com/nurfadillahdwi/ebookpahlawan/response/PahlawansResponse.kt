@@ -2,8 +2,6 @@ package com.nurfadillahdwi.ebookpahlawan.response
 
 import com.google.gson.annotations.SerializedName
 import com.nurfadillahdwi.ebookpahlawan.response.extra.Attributes
-
-
 data class PahlawansResponse(
 	@SerializedName("data")
 	val data: List<DataItem?>? = null,
@@ -25,7 +23,9 @@ data class Attributes (
 	var tglWafat: String? = null,
 	@SerializedName("keterangan") var keterangan: String? = null,
 	@SerializedName("peran") var peran: String? = null,
+	@SerializedName("link_pahlawan") var linkPahlawan: String? = null,
 	@SerializedName("avatar") var avatar: Avatar? = Avatar()
+
 )
 
 data class Avatar (

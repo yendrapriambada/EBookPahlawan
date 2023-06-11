@@ -1,10 +1,10 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.nurfadillahdwi.ebookpahlawan.R
 
@@ -23,7 +23,7 @@ class KataPengantarActivity : AppCompatActivity() {
     private fun goBack() {
         val i = Intent(this, TentangActivity::class.java)
         startActivity(i)
-        Animatoo.animateSlideRight( this)
+        Animatoo.animateSlideRight(this)
         finish()
     }
 
@@ -39,7 +39,7 @@ class KataPengantarActivity : AppCompatActivity() {
                 } else if (x1 > x2) {
                     val i = Intent(this, DaftarIsiActivity::class.java)
                     startActivity(i)
-                    Animatoo.animateSlideLeft( this)
+                    Animatoo.animateSlideLeft(this)
                     finish()
                 }
             }

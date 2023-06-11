@@ -2,7 +2,6 @@ package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +21,7 @@ class QouteActivity : AppCompatActivity() {
 
         from = intent.getStringExtra(EXTRA_MESSAGE)
 
-        when (indexPahlawan.minus(1)?.div(4)) {
+        when (indexPahlawan.minus(1).div(4)) {
             0 -> setContentView(R.layout.activity_qoute)
             1 -> setContentView(R.layout.activity_quote2)
             2 -> setContentView(R.layout.activity_quote3)

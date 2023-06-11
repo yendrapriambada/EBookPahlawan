@@ -1,20 +1,90 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import androidx.activity.addCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.nurfadillahdwi.ebookpahlawan.R
+import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityDaftarIsiBinding
+import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
 
 class DaftarIsiActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDaftarIsiBinding
     private var x1: Float = 0.0F
     private var x2: Float = 0.0F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_daftar_isi)
+        binding = ActivityDaftarIsiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        indexPahlawan = 0
+
+        binding.apply {
+            btnCover.setOnClickListener {
+                Intent(this@DaftarIsiActivity, MainActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnInformasi.setOnClickListener {
+                Intent(this@DaftarIsiActivity, KeteranganActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnTentang.setOnClickListener {
+                Intent(this@DaftarIsiActivity, TentangActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnPengantar.setOnClickListener {
+                Intent(this@DaftarIsiActivity, KataPengantarActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnMateri.setOnClickListener {
+                Intent(this@DaftarIsiActivity, Materi1Activity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnContoh.setOnClickListener {
+                Intent(this@DaftarIsiActivity, InstruksiContohActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnLatihan.setOnClickListener {
+                Intent(this@DaftarIsiActivity, MKCActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnRefleksi.setOnClickListener {
+                Intent(this@DaftarIsiActivity, ReflectionActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+
+            btnReferensi.setOnClickListener {
+                Intent(this@DaftarIsiActivity, ReferenceActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            }
+        }
         onBackPressedDispatcher.addCallback(this) {
             goBack()
         }
@@ -23,7 +93,7 @@ class DaftarIsiActivity : AppCompatActivity() {
     private fun goBack() {
         val i = Intent(this, KataPengantarActivity::class.java)
         startActivity(i)
-        Animatoo.animateSlideRight( this)
+        Animatoo.animateSlideRight(this)
         finish()
     }
 

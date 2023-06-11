@@ -41,7 +41,7 @@ class Materi1Activity : AppCompatActivity() {
     }
 
     private fun backIntent() {
-        val i = Intent(this, TentangActivity::class.java)
+        val i = Intent(this, DaftarIsiActivity::class.java)
         startActivity(i)
         Animatoo.animateSlideRight(this)
         finish()

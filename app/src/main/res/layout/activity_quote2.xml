@@ -6,7 +6,6 @@
     android:background="#d84444">
 
     <ImageView
-        android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_marginTop="80dp"
@@ -15,7 +14,6 @@
         app:srcCompat="@drawable/ic_quote2_text" />
 
     <ImageView
-        android:id="@+id/imageView13"
         android:layout_width="wrap_content"
         android:layout_height="328dp"
         android:scaleType="fitXY"

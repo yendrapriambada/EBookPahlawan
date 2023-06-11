@@ -6,15 +6,25 @@ import android.view.MotionEvent
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.nurfadillahdwi.ebookpahlawan.R
+import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityMateri3Binding
+
 
 class Materi3Activity : AppCompatActivity() {
     private var x1: Float = 0.0F
     private var x2: Float = 0.0F
+    private lateinit var binding: ActivityMateri3Binding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_materi3)
+        binding = ActivityMateri3Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        binding.btnHome.setOnClickListener {
+            val i = Intent(this, DaftarIsiActivity::class.java)
+            startActivity(i)
+            finish()
+        }
         onBackPressedDispatcher.addCallback(this) {
             backIntent()
         }
@@ -29,11 +39,6 @@ class Materi3Activity : AppCompatActivity() {
                 x2 = touchEvent.x
                 if (x1 < x2) {
                     backIntent()
-                } else if (x1 > x2) {
-                    val i = Intent(this, InstruksiContohActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideLeft(this)
-                    finish()
                 }
             }
         }

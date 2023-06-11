@@ -1,6 +1,7 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -15,6 +16,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPahlawanTemplate2Binding
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
+import com.nurfadillahdwi.ebookpahlawan.helper.tempLinkPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 import com.nurfadillahdwi.ebookpahlawan.view.PahlawanTemplate1Activity.Companion.EXTRA_MESSAGE
 
@@ -42,6 +44,7 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
 
 
         viewModel.getPahlawans(token, namaSiswa)
+        Log.d("index saat ini", indexPahlawan.toString())
         viewModel.responsePahlawan.observe(this) {
             totalPahlawan = it.data?.size
             it.data?.get(indexPahlawan).let {
@@ -62,10 +65,35 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .error(R.mipmap.ic_launcher_round)
                     .into(binding.fotoPahlawan)
+
+                // set Active Click Listener
+                binding.fotoPahlawan.apply {
+                    isActivated = true
+                    isClickable = true
+                    isFocusable = true
+                }
+                tempLinkPahlawan = it?.attributes?.linkPahlawan.toString()
             }
         }
+
+        binding.fotoPahlawan.setOnClickListener {
+            val url = tempLinkPahlawan
+            Log.d("url", url.toString())
+            if (url != "null") {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                startActivity(i)
+            }
+        }
+
         onBackPressedDispatcher.addCallback(this) {
             goBack()
+        }
+
+        binding.btnHome.setOnClickListener {
+            val i = Intent(this, DaftarIsiActivity::class.java)
+            startActivity(i)
+            finish()
         }
     }
 
@@ -106,10 +134,10 @@ class PahlawanTemplate2Activity : AppCompatActivity() {
                     goBack()
                 } else if (x1 > x2) {
                     if (indexPahlawan == totalPahlawan!!.minus(1)) {
-                        val i = Intent(this, MKCActivity::class.java)
-                        startActivity(i)
-                        Animatoo.animateSlideLeft(this)
-                        finish()
+//                        val i = Intent(this, MKCActivity::class.java)
+//                        startActivity(i)
+//                        Animatoo.animateSlideLeft(this)
+//                        finish()
                     } else if (indexPahlawan.plus(1) % 4 == 0) {
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "forward")

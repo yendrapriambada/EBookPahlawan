@@ -17,7 +17,6 @@
         app:srcCompat="@drawable/ic_quote3_flag_top" />
 
     <ImageView
-        android:id="@+id/imageView15"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:layout_marginTop="-64dp"
@@ -27,7 +26,6 @@
         app:srcCompat="@drawable/ic_quote3_text" />
 
     <ImageView
-        android:id="@+id/imageView16"
         android:layout_width="wrap_content"
         android:layout_height="328dp"
         android:scaleType="fitXY"

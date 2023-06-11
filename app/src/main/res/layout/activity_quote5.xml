@@ -7,7 +7,6 @@
 
 
     <ImageView
-        android:id="@+id/imageView22"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_marginEnd="-100dp"
@@ -17,7 +16,6 @@
         app:srcCompat="@drawable/ic_quote5_cloud" />
 
     <ImageView
-        android:id="@+id/imageView24"
         android:layout_width="wrap_content"
         android:layout_height="440dp"
         android:scaleType="fitXY"
@@ -26,7 +24,6 @@
         app:srcCompat="@drawable/ic_quote5_cloud_bottom" />
 
     <ImageView
-        android:id="@+id/imageView23"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_marginTop="64dp"

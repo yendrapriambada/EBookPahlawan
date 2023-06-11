@@ -3,6 +3,7 @@ package com.nurfadillahdwi.ebookpahlawan.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.addCallback
@@ -43,19 +44,24 @@ class PracticeActivity : AppCompatActivity() {
         binding.imageButton.setOnClickListener {
             uploadData()
         }
+        binding.btnHome.setOnClickListener {
+            val i = Intent(this, DaftarIsiActivity::class.java)
+            startActivity(i)
+            finish()
+        }
 
         viewModel.isLoading.observe(this) {
             showLoading(it)
         }
         viewModel.onFailure.observe(this) {
-            if (it.contains("Expected BEGIN_OBJECT but was BEGIN_ARRAY")){
+            if (it.contains("Expected BEGIN_OBJECT but was BEGIN_ARRAY")) {
                 showToast(this, "Berhasil!")
 
                 indexPahlawan++
+                Log.d("index saat ini", indexPahlawan.toString())
                 val i = Intent(this, PahlawanTemplate2Activity::class.java)
                 startActivity(i)
-            }
-            else{
+            } else {
                 AlertDialog.Builder(this).apply {
                     setTitle("Oops!")
                     setMessage(it)
@@ -75,7 +81,7 @@ class PracticeActivity : AppCompatActivity() {
     private fun goBack() {
         val i = Intent(this, GuideActivity::class.java)
         startActivity(i)
-        Animatoo.animateSlideRight( this)
+        Animatoo.animateSlideRight(this)
         finish()
     }
 
@@ -129,16 +135,23 @@ class PracticeActivity : AppCompatActivity() {
                     keterangan = inputKeterangan,
                     peran = inputPeran,
                     avatar = null,
-                    nama_siswa = inputNamaSiswa
+                    nama_siswa = inputNamaSiswa,
+                    link_pahlawan = null
                 )
 
                 viewModel.addDataPahlawan(token, pahlawanData)
 
                 viewModel.responseAddDataPahlawan.observe(this) { addData ->
-                    viewModel.addImagePahlawan(token, imageMultipart, "api::ebook-pahlawan.ebook-pahlawan", addData.data?.id.toString(), "avatar")
+                    viewModel.addImagePahlawan(
+                        token,
+                        imageMultipart,
+                        "api::ebook-pahlawan.ebook-pahlawan",
+                        addData.data?.id.toString(),
+                        "avatar"
+                    )
 
                     viewModel.responseAddImagePahlawan.observe(this) { addImage ->
-                        if (addImage){
+                        if (addImage) {
                             showToast(this, "Berhasil!")
                         }
                     }
@@ -178,13 +191,14 @@ class PracticeActivity : AppCompatActivity() {
             MotionEvent.ACTION_UP -> {
                 x2 = touchEvent.x
                 if (x1 < x2) {
-                   goBack()
-                } else if (x1 > x2) {
-                    val i = Intent(this, ReflectionActivity::class.java)
-                    startActivity(i)
-                    Animatoo.animateSlideLeft( this)
-                    finish()
+                    goBack()
                 }
+//                else if (x1 > x2) {
+//                    val i = Intent(this, ReflectionActivity::class.java)
+//                    startActivity(i)
+//                    Animatoo.animateSlideLeft( this)
+//                    finish()
+//                }
             }
         }
         return false

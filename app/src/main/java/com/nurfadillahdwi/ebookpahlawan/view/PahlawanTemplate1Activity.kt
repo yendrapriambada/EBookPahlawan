@@ -1,7 +1,9 @@
 package com.nurfadillahdwi.ebookpahlawan.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.addCallback
@@ -15,6 +17,7 @@ import com.nurfadillahdwi.ebookpahlawan.R
 import com.nurfadillahdwi.ebookpahlawan.databinding.ActivityPahlawanTemplate1Binding
 import com.nurfadillahdwi.ebookpahlawan.helper.flagPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.indexPahlawan
+import com.nurfadillahdwi.ebookpahlawan.helper.tempLinkPahlawan
 import com.nurfadillahdwi.ebookpahlawan.helper.totalPahlawan
 
 class PahlawanTemplate1Activity : AppCompatActivity() {
@@ -59,13 +62,36 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                     .error(R.mipmap.ic_launcher_round)
                     .into(binding.fotoPahlawan)
 
+                // set Active Click Listener
+                binding.fotoPahlawan.apply {
+                    isActivated = true
+                    isClickable = true
+                    isFocusable = true
+                }
+                tempLinkPahlawan = it?.attributes?.linkPahlawan.toString()
                 // set User was here
                 flagPahlawan = true
             }
         }
 
+        binding.fotoPahlawan.setOnClickListener {
+            val url = tempLinkPahlawan
+            Log.d("url", url.toString())
+            if (url != "null") {
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                startActivity(i)
+            }
+        }
+
         onBackPressedDispatcher.addCallback(this) {
             goBack()
+        }
+
+        binding.btnHome.setOnClickListener {
+            val i = Intent(this, DaftarIsiActivity::class.java)
+            startActivity(i)
+            finish()
         }
     }
 
@@ -104,7 +130,7 @@ class PahlawanTemplate1Activity : AppCompatActivity() {
                 if (x1 < x2) {
                     goBack()
                 } else if (x1 > x2) { // next
-                    if (indexPahlawan.plus(1) % 4 == 0 && indexPahlawan!=0) { // quote
+                    if (indexPahlawan.plus(1) % 4 == 0 && indexPahlawan != 0) { // quote
                         val i = Intent(this, QouteActivity::class.java)
                         i.putExtra(EXTRA_MESSAGE, "forward")
                         startActivity(i)
